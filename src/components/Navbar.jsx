@@ -109,14 +109,17 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed top-6 left-0 right-0 z-50 flex justify-center w-full px-4 md:px-8 pointer-events-none font-['Playfair_Display',_Georgia,_serif]">
+    <div className="fixed top-4 sm:top-6 left-0 right-0 z-50 flex justify-center w-full px-3 md:px-8 pointer-events-none font-['Playfair_Display',_Georgia,_serif]">
       
-      {/* Desktop Navbar */}
-      <nav className="pointer-events-auto flex items-center justify-between w-full max-w-5xl px-8 py-2.5 bg-white/20 backdrop-blur-xl rounded-full shadow-[0_4px_30px_rgba(0,0,0,0.1)] border border-white/40 transition-colors duration-300">
-        <Link to="/" className="text-xl tracking-[0.15em] font-bold text-gray-900 z-[70]">
+      {/* Navbar Container */}
+      <nav className="pointer-events-auto flex items-center justify-between w-full max-w-5xl px-5 sm:px-8 py-2.5 bg-white/20 backdrop-blur-xl rounded-full shadow-[0_4px_30px_rgba(0,0,0,0.1)] border border-white/40 transition-colors duration-300">
+        
+        {/* LOGO */}
+        <Link to="/" className="text-lg sm:text-xl tracking-[0.15em] font-bold text-gray-900 z-[70]">
           WEBREV
         </Link>
 
+        {/* DESKTOP MENU LINKS */}
         <div className="hidden lg:flex items-center gap-6 xl:gap-8">
           {Object.values(menuData).map((menu) => (
             <NavItemWithMegaMenu 
@@ -134,7 +137,8 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="flex items-center gap-3 md:gap-4 z-[70]">
+        {/* RIGHT SIDE BUTTONS (ALWAYS VISIBLE NOW) */}
+        <div className="flex items-center gap-2 sm:gap-4 z-[70]">
           <button 
             onClick={() => setIsModalOpen(true)}
             className="hidden md:block relative overflow-hidden rounded-full bg-[#1a1a1a] px-5 py-2 text-sm text-white font-medium transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_4px_15px_rgba(0,0,0,0.2)]"
@@ -143,10 +147,11 @@ const Navbar = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full hover:animate-[shimmer_1.5s_infinite]" />
           </button>
 
+          {/* LOGIN BUTTON: Added explicitly for both Mobile & Desktop */}
           {!user ? (
             <button
               onClick={() => clerk.openSignIn()}
-              className="hidden sm:block px-5 py-2 text-sm font-medium border border-gray-400/50 rounded-full hover:bg-white/40 backdrop-blur-sm transition-colors text-gray-900"
+              className="block px-4 py-1.5 sm:px-5 sm:py-2 text-[12px] sm:text-sm font-bold border border-gray-400/50 rounded-full hover:bg-white/40 backdrop-blur-sm transition-colors text-gray-900"
             >
               Login
             </button>
@@ -158,46 +163,64 @@ const Navbar = () => {
             </UserButton>
           )}
 
+          {/* HAMBURGER MENU ICON (MOBILE ONLY) */}
           <button
             onClick={() => setOpen(!open)}
-            className="lg:hidden relative w-8 h-8 flex flex-col justify-center items-center gap-[5px] ml-1 focus:outline-none"
+            className="lg:hidden relative w-8 h-8 flex flex-col justify-center items-center gap-[4px] ml-1 focus:outline-none"
             aria-label="Toggle Menu"
           >
-            <span className={`block w-6 h-[2px] bg-gray-900 rounded-full transition-all duration-300 ease-in-out ${open ? 'translate-y-[7px] rotate-45' : ''}`} />
-            <span className={`block w-6 h-[2px] bg-gray-900 rounded-full transition-all duration-300 ease-in-out ${open ? 'opacity-0 translate-x-3' : 'opacity-100'}`} />
-            <span className={`block w-6 h-[2px] bg-gray-900 rounded-full transition-all duration-300 ease-in-out ${open ? '-translate-y-[7px] -rotate-45' : ''}`} />
+            <span className={`block w-5 h-[2px] bg-gray-900 rounded-full transition-all duration-300 ease-in-out ${open ? 'translate-y-[6px] rotate-45' : ''}`} />
+            <span className={`block w-5 h-[2px] bg-gray-900 rounded-full transition-all duration-300 ease-in-out ${open ? 'opacity-0 translate-x-3' : 'opacity-100'}`} />
+            <span className={`block w-5 h-[2px] bg-gray-900 rounded-full transition-all duration-300 ease-in-out ${open ? '-translate-y-[6px] -rotate-45' : ''}`} />
           </button>
         </div>
       </nav>
 
-      {/* Mobile Drawer */}
+      {/* --- MOBILE HAMBURGER DRAWER --- */}
       <div className={`pointer-events-auto fixed inset-0 bg-[#f8f8f8] z-[60] lg:hidden overflow-y-auto transition-opacity duration-300 ease-out font-['Playfair_Display',_Georgia,_serif] ${open ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
-        <button onClick={() => setOpen(false)} className="absolute top-6 right-6 p-2 bg-white border border-gray-200 shadow-sm rounded-full z-[70]"><XIcon className="w-5 h-5 text-gray-900" /></button>
+        
+        <button onClick={() => setOpen(false)} className="absolute top-6 right-6 p-2 bg-white border border-gray-200 shadow-sm rounded-full z-[70]">
+          <XIcon className="w-5 h-5 text-gray-900" />
+        </button>
+        
         <div className="flex flex-col pt-24 pb-10 px-4 min-h-full">
-          <div className="w-full bg-[#ffffff] rounded-[24px] shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+          <div className="w-full bg-[#ffffff] rounded-[24px] shadow-[0_10px_30px_rgba(0,0,0,0.08)] mb-6">
             {Object.values(menuData).map((menu, idx, arr) => (
               <div key={menu.id} className={`w-full ${idx !== arr.length - 1 ? 'border-b border-black/[0.08]' : ''}`}>
                 <button onClick={(e) => toggleMobileMenu(menu.id, e)} className="w-full flex justify-between items-center px-[20px] py-[16px]">
                   <span className="text-[15px] font-semibold text-[#111111] uppercase tracking-[0.5px]">{menu.title}</span>
-                  <ChevronDown className={`w-5 h-5 transition-transform ${activeMobileMenu === menu.id ? 'rotate-180' : ''}`} />
+                  {menu.links.length > 0 && (
+                    <ChevronDown className={`w-5 h-5 transition-transform ${activeMobileMenu === menu.id ? 'rotate-180' : ''}`} />
+                  )}
                 </button>
-                <div className={`overflow-hidden transition-all duration-300 ${activeMobileMenu === menu.id ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                  <div className="flex flex-col gap-1 px-[20px] pb-5 pt-1">
-                    {menu.links.map((link, idx) => (
-                      <Link to="/" key={idx} onClick={() => setOpen(false)} className="py-2.5">
-                        <h4 className="font-medium text-[#111111] text-[15px]">{link.title}</h4>
-                        <p className="text-black/60 text-[13px] mt-0.5">{link.desc}</p>
-                      </Link>
-                    ))}
+                {menu.links.length > 0 && (
+                  <div className={`overflow-hidden transition-all duration-300 ${activeMobileMenu === menu.id ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                    <div className="flex flex-col gap-1 px-[20px] pb-5 pt-1">
+                      {menu.links.map((link, idx) => (
+                        <Link to="/" key={idx} onClick={() => setOpen(false)} className="py-2.5">
+                          <h4 className="font-medium text-[#111111] text-[15px]">{link.title}</h4>
+                          <p className="text-black/60 text-[13px] mt-0.5">{link.desc}</p>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             ))}
+          </div>
+
+          <div className="flex flex-col gap-3 mt-auto w-full">
+            <button
+              onClick={() => { setOpen(false); setIsModalOpen(true); }}
+              className="w-full px-4 py-4 text-[14px] font-bold text-white uppercase tracking-[0.5px] bg-[#0a0a0a] rounded-full hover:bg-black transition-colors shadow-md text-center"
+            >
+              Experience Webrev
+            </button>
           </div>
         </div>
       </div>
 
-      {/* --- REFINED COMPACT CONTACT MODAL --- */}
+      {/* --- COMPACT CONTACT MODAL --- */}
       {isModalOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 pointer-events-auto font-['Playfair_Display',_Georgia,_serif]">
           {/* Soft Overlay */}
