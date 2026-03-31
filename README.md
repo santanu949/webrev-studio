@@ -86,43 +86,7 @@ Playfair Display → Editorial accents
   src: url('/fonts/fervent.woff2') format('woff2');
   font-weight: bold;
 }
-⚙️ Installation
-# Clone the repository
-git clone https://github.com/your-username/webrev.git
 
-# Navigate to project
-cd webrev
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-📦 Build
-npm run build
-npm run preview
-🔐 Environment Setup (if using Clerk)
-
-Create a .env file:
-
-VITE_CLERK_PUBLISHABLE_KEY=your_key_here
-🧪 Performance Focus
-Optimized asset loading
-Minimal runtime overhead
-GPU-accelerated animations
-Lazy-loaded components
-🎯 Ideal Use Cases
-Web agencies
-Freelancers building premium portfolios
-SaaS landing pages
-AI product showcases
-🧠 What Makes This Different
-
-Most agency websites:
-
-Overdesigned
-Slow
-Zero conversion logic
 
 WEBREV:
 
