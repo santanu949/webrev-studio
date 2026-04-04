@@ -288,6 +288,22 @@ const HeroSection = () => {
               </div>
             ))}
           </div>
+          <div className={`flex w-max gap-4 mt-4 animate-marquee-rtl ${isMobileTouched ? 'pause-animation' : ''}`}>
+            {[...[...services].reverse(), ...[...services].reverse()].map((service, idx) => (
+              <div key={`${service.id}-${idx}-mobile-bottom`} className="shrink-0 w-[85vw]">
+                <div className="relative overflow-hidden flex justify-between items-start bg-white/85 backdrop-blur-xl border border-white rounded-[24px] p-6 shadow-[0_12px_40px_-10px_rgba(0,0,0,0.12)] h-full w-full">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-70 pointer-events-none`} />
+                  <div className="relative z-10 flex flex-shrink-0 items-center justify-center w-14 h-14 rounded-[14px] bg-white/90 border border-white/80 shadow-sm backdrop-blur-md">
+                    <img src="/logo1.png" alt="Horizon Logo" className="w-8 h-8 object-contain drop-shadow-sm" />
+                  </div>
+                  <div className="relative z-10 text-right ml-4 flex flex-col justify-center w-full min-h-[56px]">
+                    <h3 className="text-[17px] font-bold text-gray-900 tracking-tight leading-snug">{service.title}</h3>
+                    <p className="text-[14px] text-gray-600 mt-1.5 leading-relaxed">{service.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -417,7 +433,8 @@ const HeroSection = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row items-start relative w-full max-w-[1100px] mx-auto px-6">
-            <div className="w-full sm:w-1/2 sticky top-24 sm:top-0 h-[45vh] sm:h-screen z-20 flex items-center justify-center pt-8 sm:pt-0 bg-[#fafafa]/90 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none">
+            {/* The transparent fix: removed bg-[#fafafa]/90 for mobile to allow scrolling text underneath to show clearly */}
+            <div className="w-full sm:w-1/2 sticky top-24 sm:top-0 h-[45vh] sm:h-screen z-20 flex items-center justify-center pt-8 sm:pt-0 bg-transparent sm:backdrop-blur-none">
               <div className="w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] relative flex items-center justify-center">
                 <div 
                   className="absolute top-1/2 left-1/2 w-28 h-28 sm:w-40 sm:h-40 rounded-full border border-white/60 bg-white/40 backdrop-blur-md flex items-center justify-center text-center shadow-[0_8px_32px_rgba(0,0,0,0.06)] z-20"
@@ -495,9 +512,7 @@ const HeroSection = () => {
             <div className="text-lg font-semibold tracking-wide text-gray-800">WEBREV</div>
             <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
               <div className="flex items-center gap-5 text-gray-700">
-                <a href="#" className="hover:text-black hover:scale-110 transition-all"><Instagram className="w-5 h-5" /></a>
-                <a href="#" className="hover:text-black hover:scale-110 transition-all"><Twitter className="w-5 h-5" /></a>
-                <a href="#" className="hover:text-black hover:scale-110 transition-all"><Linkedin className="w-5 h-5" /></a>
+                
                 <a href="mailto:webrevinfo@gmail.com" className="hover:text-black hover:scale-110 transition-all"><Mail className="w-5 h-5" /></a>
               </div>
               <p className="text-sm text-gray-500">© 2026 All rights reserved.</p>
