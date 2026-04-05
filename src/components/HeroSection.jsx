@@ -433,7 +433,7 @@ const HeroSection = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row items-start relative w-full max-w-[1100px] mx-auto px-6">
-            {/* The transparent fix: removed bg-[#fafafa]/90 for mobile to allow scrolling text underneath to show clearly */}
+            {/* The transparent fix: ensuring transparent background on mobile to allow scrolling text underneath to show clearly */}
             <div className="w-full sm:w-1/2 sticky top-24 sm:top-0 h-[45vh] sm:h-screen z-20 flex items-center justify-center pt-8 sm:pt-0 bg-transparent sm:backdrop-blur-none">
               <div className="w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] relative flex items-center justify-center">
                 <div 
@@ -512,7 +512,9 @@ const HeroSection = () => {
             <div className="text-lg font-semibold tracking-wide text-gray-800">WEBREV</div>
             <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
               <div className="flex items-center gap-5 text-gray-700">
-                
+                <a href="#" className="hover:text-black hover:scale-110 transition-all"><Instagram className="w-5 h-5" /></a>
+                <a href="#" className="hover:text-black hover:scale-110 transition-all"><Twitter className="w-5 h-5" /></a>
+                <a href="#" className="hover:text-black hover:scale-110 transition-all"><Linkedin className="w-5 h-5" /></a>
                 <a href="mailto:webrevinfo@gmail.com" className="hover:text-black hover:scale-110 transition-all"><Mail className="w-5 h-5" /></a>
               </div>
               <p className="text-sm text-gray-500">© 2026 All rights reserved.</p>

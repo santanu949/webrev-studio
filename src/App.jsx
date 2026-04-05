@@ -1,37 +1,31 @@
-import React from 'react'
-import Navbar from './components/Navbar'
-import { Routes, Route, useLocation } from 'react-router-dom'
-import Home from './pages/Home'
-import Movies from './pages/Movies'
-import MovieDetails from './pages/MovieDetails'
-import SeatLayout from './pages/SeatLayout'
-import MyBookings from './pages/MyBookings'
-import Favorite from './pages/Favorite'
-import{ Toaster } from 'react-hot-toast'
-import Footer from './components/Footer'
-import HeroSection from './components/HeroSection'
+import React from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
-const App = () => { 
+// Components & Pages (Ensure karein ki ye paths aapke folders se match karte hon)
+import Navbar from './components/Navbar';
+import HeroSection from './components/HeroSection'; 
+import AdminDashboard from './pages/AdminDashboard'; 
 
-const isAdminRoute = useLocation().pathname.startsWith('/admin');
-
+function App() { 
+  // URL check karne ke liye: kya current route '/admin' se start hota hai?
+  const isAdminRoute = useLocation().pathname.startsWith('/admin');
 
   return (
-    <>
-     <Toaster />
-     {!isAdminRoute && <Navbar/>} 
-     <Routes>
-      <Route path='/' element={<Home/>}/>
-      <Route path='/movies' element={<Movies/>}/>
-      <Route path='/movies/:id' element={<MovieDetails/>}/>
-      <Route path='/movies/:id/:date' element={<SeatLayout/>}/>
-      <Route path='/my-bookings' element={<MyBookings/>}/>
-      <Route path='/favorite' element={<Favorite/>}/>
- </Routes>
-        {!isAdminRoute && <Footer/>} 
+    <div className="app-container bg-[#fafafa]">
+      
+      {/* Agar admin route NAHI hai, tabhi Navbar dikhega */}
+      {!isAdminRoute && <Navbar />} 
+      
+      <Routes>
+        {/* MAIN USER FACING WEBSITE */}
+        <Route path='/' element={<HeroSection />} />
 
-    </>
-  )
+        {/* SECURE ADMIN DASHBOARD (Bina normal Navbar ke) */}
+        <Route path="/admin" element={<AdminDashboard />} />
+      </Routes>
+
+    </div>
+  );
 }
 
-export default App
+export default App;
