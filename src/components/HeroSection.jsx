@@ -13,23 +13,23 @@ const services = [
 
 // 2. Platform Storyline Content
 const platformFeatures = [
-  { 
-    id: 'feat-1', 
-    title: 'Websites That Actually Convert', 
-    desc: "We don’t just build websites, we build experiences that turn visitors into customers. Every element is designed with purpose and performance in mind.", 
-    tags: ['UI/UX', 'Conversion', 'Performance'] 
+  {
+    id: 'feat-1',
+    title: 'Websites That Actually Convert',
+    desc: "We don’t just build websites, we build experiences that turn visitors into customers. Every element is designed with purpose and performance in mind.",
+    tags: ['UI/UX', 'Conversion', 'Performance']
   },
-  { 
-    id: 'feat-2', 
-    title: 'Design Meets Functionality', 
-    desc: 'From modern UI to seamless backend systems, we create platforms that look premium and work flawlessly across all devices.', 
-    tags: ['Frontend', 'Backend', 'Responsive'] 
+  {
+    id: 'feat-2',
+    title: 'Design Meets Functionality',
+    desc: 'From modern UI to seamless backend systems, we create platforms that look premium and work flawlessly across all devices.',
+    tags: ['Frontend', 'Backend', 'Responsive']
   },
-  { 
-    id: 'feat-3', 
-    title: 'Built to Scale & Perform', 
-    desc: 'Fast, secure, and scalable solutions so your business can grow without worrying about speed, downtime, or limitations.', 
-    tags: ['Scalable', 'Secure', 'Optimized'] 
+  {
+    id: 'feat-3',
+    title: 'Built to Scale & Perform',
+    desc: 'Fast, secure, and scalable solutions so your business can grow without worrying about speed, downtime, or limitations.',
+    tags: ['Scalable', 'Secure', 'Optimized']
   },
 ];
 
@@ -43,44 +43,44 @@ const labStats = [
 
 // 4. Converging Storyline Content
 const convergingFeatures = [
-  { 
-    id: 'conv-1', 
-    title: 'Strategy First Approach', 
-    desc: 'We start by understanding your business, audience, and goals so every decision is intentional, not guesswork.' 
+  {
+    id: 'conv-1',
+    title: 'Strategy First Approach',
+    desc: 'We start by understanding your business, audience, and goals so every decision is intentional, not guesswork.'
   },
-  { 
-    id: 'conv-2', 
-    title: 'Design & Development', 
-    desc: 'From modern UI/UX to seamless development, we build websites that look premium and perform flawlessly.' 
+  {
+    id: 'conv-2',
+    title: 'Design & Development',
+    desc: 'From modern UI/UX to seamless development, we build websites that look premium and perform flawlessly.'
   },
-  { 
-    id: 'conv-3', 
-    title: 'Performance & Growth', 
-    desc: 'Optimized for speed, SEO, and scalability so your website not only launches but continues to grow with your business.' 
+  {
+    id: 'conv-3',
+    title: 'Performance & Growth',
+    desc: 'Optimized for speed, SEO, and scalability so your website not only launches but continues to grow with your business.'
   },
-  { 
-    id: 'conv-cta', 
-    title: 'READY TO BUILD?', 
-    desc: "Tell us about your project. We'll get back to you within 24 hours with a plan and a quote.", 
-    isCta: true 
+  {
+    id: 'conv-cta',
+    title: 'READY TO BUILD?',
+    desc: "Tell us about your project. We'll get back to you within 24 hours with a plan and a quote.",
+    isCta: true
   }
 ];
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isBuilderVisible, setIsBuilderVisible] = useState(false);
-  
+
   const sectionRef = useRef(null);
   const builderRef = useRef(null);
   const scrollRef = useRef(null);
-  
+
   const [isHovered, setIsHovered] = useState(false);
   const [isMobileTouched, setIsMobileTouched] = useState(false);
 
   // Scroll Story States
   const [activeStory, setActiveStory] = useState('feat-1');
   const [activeConv, setActiveConv] = useState('conv-1');
-  
+
   // Converging Circles Progress State
   const convergingWrapperRef = useRef(null);
   const [convProgress, setConvProgress] = useState(0);
@@ -103,36 +103,36 @@ const HeroSection = () => {
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            if (entry.target.id === 'what-we-offer') setIsVisible(true);
-            if (entry.target.id === 'builder') setIsBuilderVisible(true);
-            if (entry.target.id === 'lab') setIsLabVisible(true);
-          }
-        });
-      }, { threshold: 0.15 }
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (entry.target.id === 'what-we-offer') setIsVisible(true);
+          if (entry.target.id === 'builder') setIsBuilderVisible(true);
+          if (entry.target.id === 'lab') setIsLabVisible(true);
+        }
+      });
+    }, { threshold: 0.15 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     if (builderRef.current) observer.observe(builderRef.current);
     if (labRef.current) observer.observe(labRef.current);
 
     const mobileObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) entry.target.classList.add('is-visible');
-          else entry.target.classList.remove('is-visible');
-        });
-      }, { threshold: 0.3 }
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+        else entry.target.classList.remove('is-visible');
+      });
+    }, { threshold: 0.3 }
     );
     document.querySelectorAll('.mobile-pricing-card').forEach(el => mobileObserver.observe(el));
 
     const storyObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            if (entry.target.classList.contains('story-step')) setActiveStory(entry.target.id);
-            if (entry.target.classList.contains('conv-step')) setActiveConv(entry.target.id);
-          }
-        });
-      }, { rootMargin: '-35% 0px -35% 0px' } 
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (entry.target.classList.contains('story-step')) setActiveStory(entry.target.id);
+          if (entry.target.classList.contains('conv-step')) setActiveConv(entry.target.id);
+        }
+      });
+    }, { rootMargin: '-35% 0px -35% 0px' }
     );
     document.querySelectorAll('.story-step, .conv-step').forEach(el => storyObserver.observe(el));
 
@@ -146,20 +146,20 @@ const HeroSection = () => {
   useEffect(() => {
     let animationFrameId;
     const scrollContainer = scrollRef.current;
-    
+
     const handleScrollAndProgress = () => {
       if (scrollContainer && window.innerWidth >= 640 && !isHovered) {
-        scrollContainer.scrollLeft += 0.6; 
+        scrollContainer.scrollLeft += 0.6;
         if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth / 2) scrollContainer.scrollLeft = 0;
       }
 
       if (convergingWrapperRef.current) {
         const rect = convergingWrapperRef.current.getBoundingClientRect();
-        const stickyTopOffset = window.innerWidth < 640 ? 96 : 0; 
-        
+        const stickyTopOffset = window.innerWidth < 640 ? 96 : 0;
+
         const scrollStart = stickyTopOffset;
         const scrollEnd = - (rect.height - window.innerHeight);
-        
+
         let progress = (rect.top - scrollStart) / (scrollEnd - scrollStart);
         setConvProgress(Math.max(0, Math.min(1, progress)));
       }
@@ -207,7 +207,7 @@ const HeroSection = () => {
           <div className="absolute top-[5%] left-[-15%] w-[60%] max-w-[900px] h-[700px] bg-blue-400/30 blur-[130px] rounded-full" />
           <div className="absolute top-[-15%] right-[-10%] w-[60%] max-w-[900px] h-[600px] bg-orange-400/30 blur-[140px] rounded-full" />
           <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[80%] max-w-[1000px] h-[350px] bg-amber-300/30 blur-[100px] rounded-full" />
-        </div> 
+        </div>
 
         <div className="relative z-10 flex flex-col items-center px-6 max-w-4xl text-center w-full mt-8">
           <img src="/logo1.png" alt="Horizon Logo" className="w-32 h-32 object-contain mb-8 drop-shadow-sm" />
@@ -221,14 +221,14 @@ const HeroSection = () => {
             Building advanced WEB infrastructure to fuel innovation and scale for enterprises worldwide.
           </p>
           <div className="flex flex-row items-center justify-center gap-3 w-full sm:w-auto mt-2">
-            <button 
+            <button
               onClick={triggerContactModal}
               className="w-1/2 sm:w-auto relative overflow-hidden rounded-full bg-[#1a1a1a] px-2 py-2.5 sm:px-8 sm:py-3.5 text-xs sm:text-sm text-white font-medium transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_4px_20px_rgba(0,0,0,0.15)] whitespace-nowrap"
             >
               <span className="relative z-10">Experience</span>
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full hover:animate-[shimmer_1.5s_infinite]" />
             </button>
-            <button 
+            <button
               onClick={handleWhatsAppChat}
               className="w-1/2 sm:w-auto px-2 py-2.5 sm:px-8 sm:py-3.5 text-xs sm:text-sm font-medium border border-gray-300 rounded-full bg-white hover:bg-gray-50 transition-colors shadow-sm text-gray-800 whitespace-nowrap"
             >
@@ -351,12 +351,11 @@ const HeroSection = () => {
       </section>
 
       {/* 4. LAB / ABOUT US SECTION */}
-      <section 
-        id="lab" 
+      <section
+        id="lab"
         ref={labRef}
-        className={`relative w-full py-24 md:py-32 bg-[#fafafa] flex flex-col items-center justify-center overflow-hidden transition-all duration-1000 ease-out z-20 ${
-          isLabVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-        }`}
+        className={`relative w-full py-24 md:py-32 bg-[#fafafa] flex flex-col items-center justify-center overflow-hidden transition-all duration-1000 ease-out z-20 ${isLabVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+          }`}
       >
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
           <div className="absolute top-[5%] left-[-15%] w-[60%] max-w-[900px] h-[700px] bg-blue-400/30 blur-[130px] rounded-full" />
@@ -376,7 +375,7 @@ const HeroSection = () => {
           </p>
         </div>
 
-        <div 
+        <div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-8 max-w-7xl w-full px-6 z-10 mt-8"
           onMouseEnter={() => setIsLabHovered(true)}
           onMouseLeave={() => setIsLabHovered(false)}
@@ -385,8 +384,8 @@ const HeroSection = () => {
             const isActive = activeLabStat === i;
 
             return (
-              <div 
-                key={stat.id} 
+              <div
+                key={stat.id}
                 className={`relative flex flex-col items-center justify-center py-12 px-6 cursor-pointer group transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
                   ${isActive ? 'scale-105 z-30 opacity-100 drop-shadow-xl' : 'scale-95 z-10 opacity-40 hover:opacity-60 hover:scale-100'}
                 `}
@@ -422,7 +421,7 @@ const HeroSection = () => {
         </div>
       </section>
 
-      {/* 5. CINEMATIC CONVERGING CIRCLES & CTA */}
+      {/* 5. MINIMAL CTA SECTION (Replaced Circles) */}
       <section id="cta" ref={convergingWrapperRef} className="relative w-full bg-[#fafafa]">
         <div className="absolute inset-0 pointer-events-none z-0">
           <div className="sticky top-0 w-full h-screen overflow-hidden">
@@ -433,77 +432,51 @@ const HeroSection = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row items-start relative w-full max-w-[1100px] mx-auto px-6">
-            {/* The transparent fix: ensuring transparent background on mobile to allow scrolling text underneath to show clearly */}
-            <div className="w-full sm:w-1/2 sticky top-24 sm:top-0 h-[45vh] sm:h-screen z-20 flex items-center justify-center pt-8 sm:pt-0 bg-transparent sm:backdrop-blur-none">
-              <div className="w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] relative flex items-center justify-center">
-                <div 
-                  className="absolute top-1/2 left-1/2 w-28 h-28 sm:w-40 sm:h-40 rounded-full border border-white/60 bg-white/40 backdrop-blur-md flex items-center justify-center text-center shadow-[0_8px_32px_rgba(0,0,0,0.06)] z-20"
-                  style={{ transform: `translate(-50%, calc(-150% + ${convProgress * 100}%))` }}
-                >
-                  <span className="text-[12px] sm:text-[14px] font-semibold text-gray-700 leading-tight">Modern<br/>UI/UX</span>
-                </div>
 
-                <div 
-                  className="absolute top-1/2 left-1/2 w-28 h-28 sm:w-40 sm:h-40 rounded-full border border-white/60 bg-white/40 backdrop-blur-md flex items-center justify-center text-center shadow-[0_8px_32px_rgba(0,0,0,0.06)] z-20"
-                  style={{ transform: `translate(calc(-150% + ${convProgress * 100}%), calc(50% - ${convProgress * 100}%))` }}
-                >
-                  <span className="text-[12px] sm:text-[14px] font-semibold text-gray-700 leading-tight">Full Website<br/>Development</span>
-                </div>
+          {/* Minimal Left Side Text Blocks */}
+          <div className="w-full sm:w-1/2 sticky top-24 sm:top-0 h-[45vh] sm:h-screen z-20 flex flex-col justify-center px-2 sm:px-12 pt-8 sm:pt-0 bg-transparent sm:backdrop-blur-none gap-6 sm:gap-8">
 
-                <div 
-                  className="absolute top-1/2 left-1/2 w-28 h-28 sm:w-40 sm:h-40 rounded-full border border-white/60 bg-white/40 backdrop-blur-md flex items-center justify-center text-center shadow-[0_8px_32px_rgba(0,0,0,0.06)] z-20"
-                  style={{ transform: `translate(calc(50% - ${convProgress * 100}%), calc(50% - ${convProgress * 100}%))` }}
-                >
-                  <span className="text-[12px] sm:text-[14px] font-semibold text-gray-700 leading-tight">Performance<br/>& SEO</span>
-                </div>
+          
+            
 
-                <div 
-                  className="absolute top-1/2 left-1/2 w-14 h-14 sm:w-20 sm:h-20 bg-white shadow-xl rounded-full flex items-center justify-center z-30 transition-all duration-300 ease-out"
-                  style={{ 
-                    opacity: convProgress > 0.85 ? 1 : 0, 
-                    transform: `translate(-50%, -50%) scale(${convProgress > 0.85 ? 1 : 0.5})` 
-                  }}
-                >
-                  <img src="/logo1.png" alt="Logo" className="w-8 h-8 sm:w-12 sm:h-12 object-contain" />
-                </div>
-              </div>
-            </div>
+          </div>
 
-            <div className="w-full sm:w-1/2 pt-[5vh] sm:pt-[15vh] z-10 px-2 sm:px-0">
-              {convergingFeatures.map((feat) => {
-                const isActive = activeConv === feat.id;
-                return (
-                  <div 
-                    key={feat.id} 
-                    id={feat.id} 
-                    className={`conv-step transition-all duration-700 ease-out flex flex-col
+          {/* Right Side Scrolling Text */}
+          <div className="w-full sm:w-1/2 pt-[5vh] sm:pt-[15vh] z-10 px-2 sm:px-0">
+            {convergingFeatures.map((feat) => {
+              const isActive = activeConv === feat.id;
+              return (
+                <div
+                  key={feat.id}
+                  id={feat.id}
+                  className={`conv-step transition-all duration-700 ease-out flex flex-col
                       ${feat.isCta ? 'justify-start min-h-0 pt-20 sm:pt-24 pb-0' : 'py-20 sm:py-24 justify-center min-h-[50vh] sm:min-h-[60vh]'}
                       ${isActive ? 'opacity-100 blur-0 scale-100' : 'opacity-30 blur-[4px] scale-[0.98]'}`
-                    }
-                  >
-                    {feat.isCta ? (
-                      <div className="text-left">
-                        <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-900 tracking-tight leading-tight mb-6">
-                          READY TO <br/> BUILD?
-                        </h2>
-                        <p className="text-[16px] sm:text-[18px] text-gray-600 leading-relaxed mb-10 max-w-md">{feat.desc}</p>
-                        <button 
-                          onClick={triggerContactModal}
-                          className="w-full sm:w-auto px-8 py-4 bg-[#1a1a1a] text-white text-[13px] md:text-[14px] font-semibold uppercase tracking-[1px] rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] hover:scale-[1.03] transition-all duration-300"
-                        >
-                          Send a Message &rarr;
-                        </button>
-                      </div>
-                    ) : (
-                      <div className="text-left">
-                        <h3 className="text-[26px] sm:text-[32px] font-semibold text-gray-900 mb-4 tracking-tight leading-snug">{feat.title}</h3>
-                        <p className="text-[16px] sm:text-[18px] text-gray-500 leading-relaxed">{feat.desc}</p>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
+                  }
+                >
+                  {feat.isCta ? (
+                    <div className="text-left">
+                      <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-900 tracking-tight leading-tight mb-6">
+                        READY TO <br /> BUILD?
+                      </h2>
+                      <p className="text-[16px] sm:text-[18px] text-gray-600 leading-relaxed mb-10 max-w-md">{feat.desc}</p>
+                      <button
+                        onClick={triggerContactModal}
+                        className="w-full sm:w-auto px-8 py-4 bg-[#1a1a1a] text-white text-[13px] md:text-[14px] font-semibold uppercase tracking-[1px] rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] hover:scale-[1.03] transition-all duration-300"
+                      >
+                        Send a Message &rarr;
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="text-left">
+                      <h3 className="text-[26px] sm:text-[32px] font-semibold text-gray-900 mb-4 tracking-tight leading-snug">{feat.title}</h3>
+                      <p className="text-[16px] sm:text-[18px] text-gray-500 leading-relaxed">{feat.desc}</p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         {/* FOOTER */}
