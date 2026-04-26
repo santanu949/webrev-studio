@@ -1,4 +1,4 @@
-# WebRev Studio: Premium Agency & Media Ecosystem
+# WebRev Studio
 
 [![React](https://img.shields.io/badge/React-19.2-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-7.2-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev/)
@@ -14,7 +14,7 @@ WebRev is built on the philosophy that **Design = Conversion**. It isn't just a 
 Most agency websites are static and generic. WebRev solves this by providing:
 - **Cinematic Storytelling**: Moving beyond flat grids to scroll-driven narratives.
 - **Enterprise Governance**: A powerful "Command Center" for managing leads and system health.
-- **Service Diversification**: Integrated media booking (Movies) as a demonstration of high-performance complex state management.
+
 
 ---
 
@@ -32,10 +32,6 @@ Most agency websites are static and generic. WebRev solves this by providing:
 - **RBAC (Role-Based Access Control)**: Tiered clearance levels for Superadmins, Analysts, and Viewers.
 - **Data Portability**: Secure export of system nodes in CSV and JSON formats.
 
-### 🎟️ Movie Booking Platform
-- **Comprehensive Catalog**: Browse movies with high-fidelity UI.
-- **Seat Selection Engine**: Interactive seat layout for real-time booking simulations.
-- **User Engagement**: "Favorite" system and booking history tracking.
 
 ---
 
@@ -122,7 +118,6 @@ The application will be available at `http://localhost:5173`.
 ## 📈 Current Status
 - **Landing Page**: Fully Implemented (Production Ready).
 - **Admin Dashboard**: Fully Implemented (Enterprise Features Active).
-- **Movie Booking**: Functional (In active development for payment gateway integration).
 
 ---
 
