@@ -105,7 +105,6 @@ The application will be available at `http://localhost:5173`.
 ### For Visitors
 1. **Explore**: Scroll through the Home page to experience the cinematic storytelling.
 2. **Services**: Interact with the services marquee to see specialized agency offerings.
-3. **Book Movies**: Navigate to `/movies` to explore the media booking platform.
 
 ### For Administrators
 1. **Access**: Navigate to `/admin` (Requires Clerk authentication and appropriate role).
