@@ -1,4 +1,4 @@
-# 🚀 WebRev Studio: Premium Agency & Media Ecosystem
+# WebRev Studio: Premium Agency & Media Ecosystem
 
 [![React](https://img.shields.io/badge/React-19.2-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-7.2-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev/)
